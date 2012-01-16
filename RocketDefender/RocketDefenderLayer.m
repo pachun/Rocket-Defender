@@ -8,10 +8,10 @@
 
 
 // Import the interfaces
-#import "HelloWorldLayer.h"
+#import "RocketDefenderLayer.h"
 
 // HelloWorldLayer implementation
-@implementation HelloWorldLayer
+@implementation RocketDefenderLayer
 
 +(CCScene *) scene
 {
@@ -19,7 +19,7 @@
 	CCScene *scene = [CCScene node];
 	
 	// 'layer' is an autorelease object.
-	HelloWorldLayer *layer = [HelloWorldLayer node];
+	RocketDefenderLayer *layer = [RocketDefenderLayer node];
 	
 	// add layer as a child to scene
 	[scene addChild: layer];
@@ -31,21 +31,13 @@
 // on "init" you need to initialize your instance
 -(id) init
 {
-	// always call "super" init
-	// Apple recommends to re-assign "self" with the "super" return value
-	if( (self=[super init])) {
-		
-		// create and initialize a Label
-		CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello World" fontName:@"Marker Felt" fontSize:64];
-
-		// ask director the the window size
-		CGSize size = [[CCDirector sharedDirector] winSize];
-	
-		// position the label on the center of the screen
-		label.position =  ccp( size.width /2 , size.height/2 );
-		
-		// add the label as a child to this Layer
-		[self addChild: label];
+    // Init bg color, baseline scenery sprites, and landing docks...
+	if( (self=[super initWithColor:ccc4(77, 243, 241, 255)])) {
+        
+        // Landing docks
+        for(int i = 0; i < 3; i++) {
+            
+        }
 	}
 	return self;
 }

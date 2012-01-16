@@ -151,7 +151,14 @@
 		DFC4FC7214C3CA0000DBCD05 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC4FC7114C3CA0000DBCD05 /* main.m */; };
 		DFC4FC7514C3CA0000DBCD05 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC4FC7414C3CA0000DBCD05 /* AppDelegate.m */; };
 		DFC4FC7814C3CA0000DBCD05 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC4FC7714C3CA0000DBCD05 /* RootViewController.m */; };
-		DFC4FC7B14C3CA0000DBCD05 /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC4FC7A14C3CA0000DBCD05 /* HelloWorldLayer.m */; };
+		DFC4FC7B14C3CA0000DBCD05 /* RocketDefenderLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC4FC7A14C3CA0000DBCD05 /* RocketDefenderLayer.m */; };
+		DFD012A514C3CD8400FB1B8B /* BlueRocket.png in Resources */ = {isa = PBXBuildFile; fileRef = DFD012A014C3CD8400FB1B8B /* BlueRocket.png */; };
+		DFD012A614C3CD8400FB1B8B /* Clouds.png in Resources */ = {isa = PBXBuildFile; fileRef = DFD012A114C3CD8400FB1B8B /* Clouds.png */; };
+		DFD012A714C3CD8400FB1B8B /* Earth.png in Resources */ = {isa = PBXBuildFile; fileRef = DFD012A214C3CD8400FB1B8B /* Earth.png */; };
+		DFD012A814C3CD8400FB1B8B /* LandingDock.png in Resources */ = {isa = PBXBuildFile; fileRef = DFD012A314C3CD8400FB1B8B /* LandingDock.png */; };
+		DFD012A914C3CD8400FB1B8B /* RedRocket.png in Resources */ = {isa = PBXBuildFile; fileRef = DFD012A414C3CD8400FB1B8B /* RedRocket.png */; };
+		DFD012AC14C3D02F00FB1B8B /* Dock.m in Sources */ = {isa = PBXBuildFile; fileRef = DFD012AB14C3D02F00FB1B8B /* Dock.m */; };
+		DFD012AF14C3D20200FB1B8B /* Rocket.m in Sources */ = {isa = PBXBuildFile; fileRef = DFD012AE14C3D20200FB1B8B /* Rocket.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -417,8 +424,17 @@
 		DFC4FC7414C3CA0000DBCD05 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		DFC4FC7614C3CA0000DBCD05 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		DFC4FC7714C3CA0000DBCD05 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		DFC4FC7914C3CA0000DBCD05 /* HelloWorldLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloWorldLayer.h; sourceTree = "<group>"; };
-		DFC4FC7A14C3CA0000DBCD05 /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
+		DFC4FC7914C3CA0000DBCD05 /* RocketDefenderLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RocketDefenderLayer.h; sourceTree = "<group>"; };
+		DFC4FC7A14C3CA0000DBCD05 /* RocketDefenderLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RocketDefenderLayer.m; sourceTree = "<group>"; };
+		DFD012A014C3CD8400FB1B8B /* BlueRocket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlueRocket.png; sourceTree = "<group>"; };
+		DFD012A114C3CD8400FB1B8B /* Clouds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Clouds.png; sourceTree = "<group>"; };
+		DFD012A214C3CD8400FB1B8B /* Earth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Earth.png; sourceTree = "<group>"; };
+		DFD012A314C3CD8400FB1B8B /* LandingDock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LandingDock.png; sourceTree = "<group>"; };
+		DFD012A414C3CD8400FB1B8B /* RedRocket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedRocket.png; sourceTree = "<group>"; };
+		DFD012AA14C3D02F00FB1B8B /* Dock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dock.h; sourceTree = "<group>"; };
+		DFD012AB14C3D02F00FB1B8B /* Dock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dock.m; sourceTree = "<group>"; };
+		DFD012AD14C3D20200FB1B8B /* Rocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rocket.h; sourceTree = "<group>"; };
+		DFD012AE14C3D20200FB1B8B /* Rocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rocket.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -479,8 +495,12 @@
 				DFC4FC7414C3CA0000DBCD05 /* AppDelegate.m */,
 				DFC4FC7614C3CA0000DBCD05 /* RootViewController.h */,
 				DFC4FC7714C3CA0000DBCD05 /* RootViewController.m */,
-				DFC4FC7914C3CA0000DBCD05 /* HelloWorldLayer.h */,
-				DFC4FC7A14C3CA0000DBCD05 /* HelloWorldLayer.m */,
+				DFC4FC7914C3CA0000DBCD05 /* RocketDefenderLayer.h */,
+				DFC4FC7A14C3CA0000DBCD05 /* RocketDefenderLayer.m */,
+				DFD012AA14C3D02F00FB1B8B /* Dock.h */,
+				DFD012AB14C3D02F00FB1B8B /* Dock.m */,
+				DFD012AD14C3D20200FB1B8B /* Rocket.h */,
+				DFD012AE14C3D20200FB1B8B /* Rocket.m */,
 				DFC4FAE414C3C9FE00DBCD05 /* Resources */,
 				DFC4FAFA14C3C9FE00DBCD05 /* Shaders */,
 				DFC4FB3114C3C9FE00DBCD05 /* libs */,
@@ -492,6 +512,11 @@
 		DFC4FAE414C3C9FE00DBCD05 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DFD012A014C3CD8400FB1B8B /* BlueRocket.png */,
+				DFD012A114C3CD8400FB1B8B /* Clouds.png */,
+				DFD012A214C3CD8400FB1B8B /* Earth.png */,
+				DFD012A314C3CD8400FB1B8B /* LandingDock.png */,
+				DFD012A414C3CD8400FB1B8B /* RedRocket.png */,
 				DFC4FAE514C3C9FE00DBCD05 /* Default.png */,
 				DFC4FAE714C3C9FE00DBCD05 /* fps_images.png */,
 				DFC4FAE914C3C9FE00DBCD05 /* fps_images-hd.png */,
@@ -950,6 +975,11 @@
 				DFC4FB2E14C3C9FE00DBCD05 /* Twist.fsh in Resources */,
 				DFC4FB3014C3C9FE00DBCD05 /* Twist.vsh in Resources */,
 				DFC4FC5314C3CA0000DBCD05 /* ChangeLog in Resources */,
+				DFD012A514C3CD8400FB1B8B /* BlueRocket.png in Resources */,
+				DFD012A614C3CD8400FB1B8B /* Clouds.png in Resources */,
+				DFD012A714C3CD8400FB1B8B /* Earth.png in Resources */,
+				DFD012A814C3CD8400FB1B8B /* LandingDock.png in Resources */,
+				DFD012A914C3CD8400FB1B8B /* RedRocket.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1058,7 +1088,9 @@
 				DFC4FC7214C3CA0000DBCD05 /* main.m in Sources */,
 				DFC4FC7514C3CA0000DBCD05 /* AppDelegate.m in Sources */,
 				DFC4FC7814C3CA0000DBCD05 /* RootViewController.m in Sources */,
-				DFC4FC7B14C3CA0000DBCD05 /* HelloWorldLayer.m in Sources */,
+				DFC4FC7B14C3CA0000DBCD05 /* RocketDefenderLayer.m in Sources */,
+				DFD012AC14C3D02F00FB1B8B /* Dock.m in Sources */,
+				DFD012AF14C3D20200FB1B8B /* Rocket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1156,6 +1188,7 @@
 				DFC4FC8014C3CA0000DBCD05 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

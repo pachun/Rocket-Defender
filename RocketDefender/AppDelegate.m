@@ -9,7 +9,7 @@
 #import "cocos2d.h"
 
 #import "AppDelegate.h"
-#import "HelloWorldLayer.h"
+#import "RocketDefenderLayer.h"
 #import "RootViewController.h"
 
 @implementation AppDelegate
@@ -90,7 +90,7 @@
 	[self removeStartupFlicker];
 	
 	// Run the intro Scene
-	[[CCDirector sharedDirector] runWithScene: [HelloWorldLayer scene]];
+	[[CCDirector sharedDirector] runWithScene: [RocketDefenderLayer scene]];
 }
 
 
