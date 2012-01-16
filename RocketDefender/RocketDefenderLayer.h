@@ -10,11 +10,16 @@
 // When you import this file, you import all the cocos2d classes
 #import "cocos2d.h"
 
+#import "Dock.h"
+#import "Rocket.h"
+
 // HelloWorldLayer
 @interface RocketDefenderLayer : CCLayerColor
 {
     NSMutableArray *_rockets;
     NSMutableArray *_docks;
+    CCSprite *_clouds;
+    CCSprite *_ground;
 }
 
 // returns a CCScene that contains the HelloWorldLayer as the only child

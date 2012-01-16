@@ -17,4 +17,7 @@
 @property(nonatomic)bool active;
 @property(retain, nonatomic)CCSprite *sprite;
 
+-(id)initActive;
+-(CGPoint)dockingPoint;
+-(void)dealloc;
 @end

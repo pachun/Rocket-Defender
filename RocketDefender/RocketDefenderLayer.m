@@ -31,13 +31,34 @@
 // on "init" you need to initialize your instance
 -(id) init
 {
+    // Initialize instance var arrays
+    _rockets = [[NSMutableArray alloc] init];
+    _docks = [[NSMutableArray alloc] init];
+    
     // Init bg color, baseline scenery sprites, and landing docks...
 	if( (self=[super initWithColor:ccc4(77, 243, 241, 255)])) {
         
         // Landing docks
-        for(int i = 0; i < 3; i++) {
-            
+        for(int i = 1, j = 1; i <= 3; i++, j+=2) {
+            Dock *dock = [[Dock alloc] initActive];
+            dock.sprite.position = ccp(((i*23)+(dock.sprite.contentSize.width/2*j)), dock.sprite.contentSize.height/2);
+            [_docks addObject:dock];
+            [self addChild:dock.sprite];
         }
+        
+        // Clouds and sky
+        CGSize winSize = [[CCDirector sharedDirector] winSize];
+        _clouds = [CCSprite spriteWithFile:@"Clouds.png"];
+        _clouds.position = ccp(winSize.width/2, winSize.height-_clouds.contentSize.height/2);
+        [self addChild:_clouds];
+        
+        // Ground
+        _ground = [CCSprite spriteWithFile:@"Ground.png"];
+        _ground.position = ccp(winSize.width/2, _ground.contentSize.height/2);
+        [self addChild: _ground];
+        
+        // Game Logic
+        [self schedule:@selector(spawnRocket) interval:2.0];
 	}
 	return self;
 }
@@ -45,11 +66,26 @@
 // on "dealloc" you need to release all your retained objects
 - (void) dealloc
 {
-	// in case you have something to dealloc, do it in this method
-	// in this particular example nothing needs to be released.
-	// cocos2d will automatically release all the children (Label)
-	
-	// don't forget to call "super dealloc"
+	[_rockets release];
+    _rockets = nil;
+    [_docks release];
+    _docks = nil;
+    
+    [_clouds release];
+    _clouds = nil;
+    [_ground release];
+    _ground = nil;
+    
 	[super dealloc];
 }
+
+-(void)spawnRocket {
+    
+    // Spawn a rocket targetted to it's closest dock
+    Rocket *rocket = [[Rocket alloc] spawnWithLevel:1 andTargetDocks:_docks to:self];
+    
+    // Add it to our rockets array
+    [_rockets addObject:rocket];
+}
+
 @end
