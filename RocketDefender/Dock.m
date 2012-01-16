@@ -29,6 +29,12 @@
                RocketHeight/2 + 20);
 }
 
+-(CGPoint)dockedPoint {
+    return ccp(self.sprite.position.x, self.sprite.position.y+
+               self.sprite.contentSize.height/2+
+               RocketHeight/2 - 10);
+}
+
 // Release retained instance vars
 -(void)dealloc {
     [self.sprite release];

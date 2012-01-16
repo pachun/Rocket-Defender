@@ -18,6 +18,7 @@
 @property(retain, nonatomic)CCSprite *sprite;
 
 -(id)initActive;
+-(CGPoint)dockedPoint;
 -(CGPoint)dockingPoint;
 -(void)dealloc;
 @end

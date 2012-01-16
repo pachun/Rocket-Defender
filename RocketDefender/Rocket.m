@@ -10,10 +10,11 @@
 
 @implementation Rocket
 
-@synthesize level;
-@synthesize armor;
-@synthesize dock;
-@synthesize sprite;
+@synthesize level = _level;
+@synthesize armor = _armor;
+@synthesize landingDegrees = _landingDegrees;
+@synthesize dock = _dock;
+@synthesize sprite = _sprite;
 
 -(id)spawnWithLevel:(int)lvl andTargetDocks:(NSMutableArray *)docks to:(CCLayer *)gameLayer {
     
@@ -59,12 +60,12 @@
     
     // Locate and set a course for the closest docking station
     int leastDist = 1000;
-    for(Dock *d in docks) {
-        if( fabs(self.sprite.position.x-d.sprite.position.x) < leastDist ) {
-            leastDist = fabs(self.sprite.position.x-d.sprite.position.x);
-            self.dock = d;
-        }
-    }
+    for(Dock *d in docks)
+        if( d.active )
+            if( fabs(self.sprite.position.x-d.sprite.position.x) < leastDist ) {
+                leastDist = fabs(self.sprite.position.x-d.sprite.position.x);
+                self.dock = d;
+            }
     
     // Determine angle to turn and face the dock
     float xOffset = fabsf(self.sprite.position.x-self.dock.sprite.position.x);
@@ -73,6 +74,7 @@
     float angleInDegrees = CC_RADIANS_TO_DEGREES(angleInRadians);
     float cocosConfiguredAngle = angleInDegrees;
     if(self.sprite.position.x < self.dock.sprite.position.x) cocosConfiguredAngle *= -1;
+    self.landingDegrees = 180 + angleInDegrees;
     
     // Determine a duration to the docking points [2,4] seconds
     float duration = arc4random() % 2 + 2;
@@ -81,6 +83,22 @@
     [self.sprite runAction:[CCSequence actions:
                             [CCRotateTo actionWithDuration:.001 angle:cocosConfiguredAngle],
                             [CCMoveTo actionWithDuration:duration position:self.dock.dockingPoint],
+                            [CCCallFunc actionWithTarget:self selector:@selector(rotateAndLand)],
+                            nil]];
+}
+
+-(void)rotateAndLand {
+    
+    // Inactive the dock
+    self.dock.active = NO;
+    
+    // Make the rocket invincible
+    self.armor = -1;
+    
+    // Rotate and land the rocket
+    [self.sprite runAction:[CCSequence actions:
+                            [CCRotateTo actionWithDuration:0.3 angle:self.landingDegrees],
+                            [CCMoveTo actionWithDuration:1.0 position:self.dock.dockedPoint],
                             nil]];
 }
 

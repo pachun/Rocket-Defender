@@ -58,6 +58,8 @@
         [self addChild: _ground];
         
         // Game Logic
+        [self schedule:@selector(checkForLose)];
+        [self schedule:@selector(redirectRockets)];
         [self schedule:@selector(spawnRocket) interval:2.0];
 	}
 	return self;
@@ -86,6 +88,26 @@
     
     // Add it to our rockets array
     [_rockets addObject:rocket];
+}
+
+-(void)redirectRockets {
+    
+    // Redirect any rocket headed towards a dock that is now inactive (has been docked)
+    for(Rocket *r in _rockets)
+        if(!r.dock.active && r.armor != -1)
+            [r targetClosestDock:_docks];
+}
+
+-(void)checkForLose {
+    
+    // If all docks are inactive, you lose
+    bool lost = true;
+    for(Dock *d in _docks)
+        if(d.active) lost = false;
+    
+    if(lost) {
+        // YOU LOSE CODE
+    }
 }
 
 @end
