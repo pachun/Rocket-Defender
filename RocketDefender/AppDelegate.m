@@ -89,6 +89,15 @@
 	// Removes the startup flicker
 	[self removeStartupFlicker];
 	
+    // Check if this is the first run
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    if(![prefs boolForKey:@"HasRunBefore"]) {
+        
+        // If not, set top score to 0 and indicate that the app has run before
+        [prefs setBool:YES forKey:@"HasRunBefore"];
+        [prefs setInteger:0 forKey:@"TopScore"];
+    }
+    
 	// Run the intro Scene
 	[[CCDirector sharedDirector] runWithScene: [RocketDefenderLayer scene]];
 }

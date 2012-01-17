@@ -9,6 +9,7 @@
 
 // Import the interfaces
 #import "RocketDefenderLayer.h"
+#import "GameOverScene.h"
 
 // HelloWorldLayer implementation
 @implementation RocketDefenderLayer
@@ -69,9 +70,8 @@
         self.isTouchEnabled = YES;
         
         // Game Logic
-        /*
         [self schedule:@selector(checkForLose)];
-        [self schedule:@selector(redirectRockets)];*/
+        [self schedule:@selector(redirectRockets)];
         [self schedule:@selector(spawnRocket) interval:2.0];
         
         [self schedule:@selector(detectCollisions)];
@@ -127,7 +127,12 @@
         if(d.active) lost = false;
     
     if(lost) {
-        // YOU LOSE CODE
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        [prefs setInteger:_points forKey:@"LastScore"];
+        
+        GameOverScene *gameOverScene = [GameOverScene node];
+        _points = 0;
+        [[CCDirector sharedDirector] replaceScene:gameOverScene];
     }
 }
 
