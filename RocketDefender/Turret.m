@@ -26,8 +26,8 @@
 
 -(CCSprite *)fireProjectile:(CGPoint)touchLocation {
     
-    // If middle-fire for another touch; abort
-    if(self.projectile!=nil) return nil;
+    // If middle-fire for another touch, or shot is too low ==> abort
+    if(self.projectile!=nil || touchLocation.y < 85) return nil;
     
     CGSize winSize = [[CCDirector sharedDirector] winSize];
     
@@ -42,7 +42,7 @@
     float angleInDegrees = CC_RADIANS_TO_DEGREES(angleInRadians);
     float cocosConfiguredAngle = angleInDegrees;
     if(touchLocation.x < self.sprite.position.x) cocosConfiguredAngle *= -1;
-    float rotationVelocity = 1 / 2*(2*M_PI); // 2 rotations per second
+    float rotationVelocity = 1 / (2*M_PI); // 1 rotation per second
     float rotateDuration = rotationVelocity * angleInRadians;
     
     // Find out where to shoot projectile

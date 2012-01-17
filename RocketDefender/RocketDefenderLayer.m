@@ -68,9 +68,10 @@
         // Game Logic
         /*
         [self schedule:@selector(checkForLose)];
-        [self schedule:@selector(redirectRockets)];
+        [self schedule:@selector(redirectRockets)];*/
         [self schedule:@selector(spawnRocket) interval:2.0];
-         */
+        
+        [self schedule:@selector(detectCollisions)];
 	}
 	return self;
 }
@@ -125,6 +126,53 @@
     if(lost) {
         // YOU LOSE CODE
     }
+}
+
+-(void)detectCollisions {
+    
+    // Loop thru rockets
+    NSMutableArray *rocketsToDelete = [[NSMutableArray alloc] init];
+    for(Rocket *r in _rockets) {
+        
+        // Create a rectangle represenation of this sprite
+        CGRect rocketRect = CGRectMake(r.sprite.position.x-r.sprite.contentSize.width/2, 
+                                       r.sprite.position.y-r.sprite.contentSize.height/2,
+                                       r.sprite.contentSize.width, 
+                                       r.sprite.contentSize.height);
+        
+        // Loop thru projectiles
+        NSMutableArray *projectilesToDelete = [[NSMutableArray alloc] init];
+        for(CCSprite *p in _projectiles) {
+            
+            // Create a rectangle representation of this sprite
+            CGRect projectileRect = CGRectMake(p.position.x-p.contentSize.width/2, 
+                                               p.position.y-p.contentSize.height/2, 
+                                               p.contentSize.width, p.contentSize.height);
+            
+            if(CGRectIntersectsRect(rocketRect, projectileRect)) {
+                [projectilesToDelete addObject:p];
+            }
+        }
+        
+        // Delete any projectiles that had a collision
+        for(CCSprite *p in projectilesToDelete) {
+            [_projectiles removeObject:p];
+            [self removeChild:p cleanup:YES];
+        }
+        
+        if([projectilesToDelete count] > 0)
+            [rocketsToDelete addObject:r];
+        
+//        [projectilesToDelete release];   I have no idea why this line receives a bad exec signal
+    }
+    
+    // Delete any rockets that had a collision
+    for(Rocket *r in rocketsToDelete) {
+        [_rockets removeObject:r];
+        [self removeChild:r.sprite cleanup:YES];
+    }
+    
+    [rocketsToDelete release];
 }
 
 -(void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
