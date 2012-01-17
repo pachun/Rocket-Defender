@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF335C3214C4F39A0012F18E /* Turret.png in Resources */ = {isa = PBXBuildFile; fileRef = DF335C3114C4F39A0012F18E /* Turret.png */; };
+		DF335C3514C4F66A0012F18E /* Turret.m in Sources */ = {isa = PBXBuildFile; fileRef = DF335C3414C4F66A0012F18E /* Turret.m */; };
+		DF335C3714C4F88F0012F18E /* Projectile.png in Resources */ = {isa = PBXBuildFile; fileRef = DF335C3614C4F88F0012F18E /* Projectile.png */; };
 		DFC4FAD414C3C9FE00DBCD05 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFC4FAD314C3C9FE00DBCD05 /* QuartzCore.framework */; };
 		DFC4FAD614C3C9FE00DBCD05 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFC4FAD514C3C9FE00DBCD05 /* OpenGLES.framework */; };
 		DFC4FAD814C3C9FE00DBCD05 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFC4FAD714C3C9FE00DBCD05 /* OpenAL.framework */; };
@@ -162,6 +165,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DF335C3114C4F39A0012F18E /* Turret.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Turret.png; sourceTree = "<group>"; };
+		DF335C3314C4F66A0012F18E /* Turret.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Turret.h; sourceTree = "<group>"; };
+		DF335C3414C4F66A0012F18E /* Turret.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Turret.m; sourceTree = "<group>"; };
+		DF335C3614C4F88F0012F18E /* Projectile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Projectile.png; sourceTree = "<group>"; };
 		DFC4FACF14C3C9FE00DBCD05 /* RocketDefender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RocketDefender.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFC4FAD314C3C9FE00DBCD05 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DFC4FAD514C3C9FE00DBCD05 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -501,6 +508,8 @@
 				DFD012AB14C3D02F00FB1B8B /* Dock.m */,
 				DFD012AD14C3D20200FB1B8B /* Rocket.h */,
 				DFD012AE14C3D20200FB1B8B /* Rocket.m */,
+				DF335C3314C4F66A0012F18E /* Turret.h */,
+				DF335C3414C4F66A0012F18E /* Turret.m */,
 				DFC4FAE414C3C9FE00DBCD05 /* Resources */,
 				DFC4FAFA14C3C9FE00DBCD05 /* Shaders */,
 				DFC4FB3114C3C9FE00DBCD05 /* libs */,
@@ -512,6 +521,8 @@
 		DFC4FAE414C3C9FE00DBCD05 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DF335C3614C4F88F0012F18E /* Projectile.png */,
+				DF335C3114C4F39A0012F18E /* Turret.png */,
 				DFD012A014C3CD8400FB1B8B /* BlueRocket.png */,
 				DFD012A114C3CD8400FB1B8B /* Clouds.png */,
 				DFD012A214C3CD8400FB1B8B /* Ground.png */,
@@ -980,6 +991,8 @@
 				DFD012A714C3CD8400FB1B8B /* Ground.png in Resources */,
 				DFD012A814C3CD8400FB1B8B /* LandingDock.png in Resources */,
 				DFD012A914C3CD8400FB1B8B /* RedRocket.png in Resources */,
+				DF335C3214C4F39A0012F18E /* Turret.png in Resources */,
+				DF335C3714C4F88F0012F18E /* Projectile.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1091,6 +1104,7 @@
 				DFC4FC7B14C3CA0000DBCD05 /* RocketDefenderLayer.m in Sources */,
 				DFD012AC14C3D02F00FB1B8B /* Dock.m in Sources */,
 				DFD012AF14C3D20200FB1B8B /* Rocket.m in Sources */,
+				DF335C3514C4F66A0012F18E /* Turret.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

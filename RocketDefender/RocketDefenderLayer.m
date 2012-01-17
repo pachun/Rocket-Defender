@@ -32,6 +32,7 @@
 -(id) init
 {
     // Initialize instance var arrays
+    _projectiles = [[NSMutableArray alloc] init];
     _rockets = [[NSMutableArray alloc] init];
     _docks = [[NSMutableArray alloc] init];
     
@@ -57,10 +58,19 @@
         _ground.position = ccp(winSize.width/2, _ground.contentSize.height/2);
         [self addChild: _ground];
         
+        // Turret
+        _turret = [[Turret alloc] initWithCaller:self];
+        [self addChild:_turret.sprite];
+        
+        // Enable touches
+        self.isTouchEnabled = YES;
+        
         // Game Logic
+        /*
         [self schedule:@selector(checkForLose)];
         [self schedule:@selector(redirectRockets)];
         [self schedule:@selector(spawnRocket) interval:2.0];
+         */
 	}
 	return self;
 }
@@ -68,6 +78,11 @@
 // on "dealloc" you need to release all your retained objects
 - (void) dealloc
 {
+    [_projectiles release];
+    _projectiles = nil;
+    [_turret release];
+    _turret = nil;
+    
 	[_rockets release];
     _rockets = nil;
     [_docks release];
@@ -77,6 +92,8 @@
     _clouds = nil;
     [_ground release];
     _ground = nil;
+    [_turret release];
+    _turret = nil;
     
 	[super dealloc];
 }
@@ -108,6 +125,18 @@
     if(lost) {
         // YOU LOSE CODE
     }
+}
+
+-(void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    NSLog(@"Hello!");
+    
+    // Get the location of the touch
+    UITouch *touch = [touches anyObject];
+    CGPoint location = [touch locationInView:[touch view]];
+    location = [[CCDirector sharedDirector] convertToGL:location];
+    
+    // Fire a projectile from the turret and save it in our projectiles array
+    [_projectiles addObject:[_turret fireProjectile:location]];
 }
 
 @end

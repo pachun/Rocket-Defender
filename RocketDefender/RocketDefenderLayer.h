@@ -12,14 +12,17 @@
 
 #import "Dock.h"
 #import "Rocket.h"
+#import "Turret.h"
 
 // HelloWorldLayer
 @interface RocketDefenderLayer : CCLayerColor
 {
+    NSMutableArray *_projectiles;
     NSMutableArray *_rockets;
     NSMutableArray *_docks;
     CCSprite *_clouds;
     CCSprite *_ground;
+    Turret *_turret;
 }
 
 // returns a CCScene that contains the HelloWorldLayer as the only child
