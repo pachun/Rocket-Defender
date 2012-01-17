@@ -19,6 +19,7 @@
         self.sprite = [CCSprite spriteWithFile:@"Turret.png"];
         self.sprite.position = ccp(winSize.width/2, self.sprite.contentSize.height/2);
         self.caller = caller;
+        self.projectile = nil;
     }
     return self;
 }
@@ -46,17 +47,13 @@
     
     // Find out where to shoot projectile
     float m = yOffset/xOffset;
-    float b = self.sprite.position.y;
+    float b = self.sprite.position.x;
     float y = winSize.height + 3;
-    
-    // y = m * x + b
-    // ===> x = (y - b)/m
-    float x = (y-b)/m;
+    float x = (1/m)*y + b;
     
     // Calculates speed of the projectile
-    float distance = sqrtf((y*y)+(x*x));
-    float moveVelocity = 1 / 480; // 480 pixels per second
-    float moveDuration = distance * moveVelocity;
+    float distance = sqrtf((yOffset*yOffset)+(xOffset*xOffset));
+    float moveDuration = distance / 480;
     
     // Rotate the turret and then fire the projectile
     [self.sprite runAction:[CCSequence actions:

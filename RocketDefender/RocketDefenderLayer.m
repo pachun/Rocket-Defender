@@ -128,7 +128,6 @@
 }
 
 -(void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    NSLog(@"Hello!");
     
     // Get the location of the touch
     UITouch *touch = [touches anyObject];
