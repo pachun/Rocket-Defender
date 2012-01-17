@@ -26,13 +26,13 @@
 -(CGPoint)dockingPoint {
     return ccp(self.sprite.position.x, self.sprite.position.y+
                self.sprite.contentSize.height/2+
-               RocketHeight/2 + 20);
+               RocketHeight/2-20);
 }
 
 -(CGPoint)dockedPoint {
     return ccp(self.sprite.position.x, self.sprite.position.y+
                self.sprite.contentSize.height/2+
-               RocketHeight/2 - 10);
+               RocketHeight/2 - 45);
 }
 
 // Release retained instance vars

@@ -72,7 +72,7 @@
         // Game Logic
         [self schedule:@selector(checkForLose)];
         [self schedule:@selector(redirectRockets)];
-        [self schedule:@selector(spawnRocket) interval:2.0];
+        [self schedule:@selector(spawnRocket) interval:1.0];
         
         [self schedule:@selector(detectCollisions)];
 	}

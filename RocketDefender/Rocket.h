@@ -11,8 +11,8 @@
 #import "cocos2d.h"
 #import "Dock.h"
 
-#define RocketHeight 60
-#define RocketWidth  36
+#define RocketHeight 120
+#define RocketWidth  72
 
 // if(armor == -1) ==> Rocket is docked and invincible
 
