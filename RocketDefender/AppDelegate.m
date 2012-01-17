@@ -10,6 +10,7 @@
 
 #import "AppDelegate.h"
 #import "RocketDefenderLayer.h"
+#import "MainMenuLayer.h"
 #import "RootViewController.h"
 
 @implementation AppDelegate
@@ -99,7 +100,8 @@
     }
     
 	// Run the intro Scene
-	[[CCDirector sharedDirector] runWithScene: [RocketDefenderLayer scene]];
+	//[[CCDirector sharedDirector] runWithScene: [RocketDefenderLayer scene]];
+    [[CCDirector sharedDirector] runWithScene: [MainMenuLayer scene]];
 }
 
 

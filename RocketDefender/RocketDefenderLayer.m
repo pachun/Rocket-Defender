@@ -127,8 +127,10 @@
         if(d.active) lost = false;
     
     if(lost) {
+        NSLog(@"Logging points to prefs as: %i", _points);
         NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
         [prefs setInteger:_points forKey:@"LastScore"];
+        NSLog(@"Points logged as: %i", [prefs integerForKey:@"LastScore"]);
         
         GameOverScene *gameOverScene = [GameOverScene node];
         _points = 0;

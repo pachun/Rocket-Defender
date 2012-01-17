@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import "MainMenuLayer.h"
 #import "GameOverScene.h"
 #import "RocketDefenderLayer.h"
 
@@ -36,6 +37,7 @@
 -(id)init {
     if(self = [super initWithColor:ccc4(0, 0, 0, 255)]) {
         CGSize winSize = [[CCDirector sharedDirector] winSize];
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
         
         // Game over label
         _gameOver = [CCLabelTTF labelWithString:@"Game Over" fontName:@"Arial" fontSize:32];
@@ -45,7 +47,7 @@
         
         // Top score label
         _topScore = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Top Score: %i", 
-                                                 [[NSUserDefaults standardUserDefaults] integerForKey:@"TopScore"]] 
+                                                 [prefs integerForKey:@"TopScore"]] 
                                        fontName:@"Arial" fontSize:18];
         _topScore.color = ccc3(255, 255, 255);
         _topScore.position = ccp(winSize.width/2, winSize.height/2);
@@ -53,13 +55,27 @@
         
         // Last score label
         _lastScore = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Last Score: %i", 
-                                                 [[NSUserDefaults standardUserDefaults] integerForKey:@"TopScore"]] 
+                                                 [prefs integerForKey:@"LastScore"]] 
                                        fontName:@"Arial" fontSize:18];
         _lastScore.color = ccc3(255, 255, 255);
         _lastScore.position = ccp(winSize.width/2, winSize.height/2-_topScore.contentSize.height/2-20);
         [self addChild:_lastScore];
+        
+        // Reset the high score if necessary
+        if([prefs integerForKey:@"LastScore"] > [prefs integerForKey:@"TopScore"])
+            [prefs setInteger:[prefs integerForKey:@"LastScore"] forKey:@"TopScore"];
+        
+        // Show this for 3 seconds before returning to the home screen
+        [self runAction:[CCSequence actions:
+                         [CCDelayTime actionWithDuration:3.0],
+                         [CCCallFuncN actionWithTarget:self selector:@selector(redirectToHomeScreen)],
+                         nil]];
     }
     return self;
+}
+
+-(void)redirectToHomeScreen {
+    [[CCDirector sharedDirector] replaceScene:[MainMenuLayer scene]];
 }
 
 -(void)dealloc {
