@@ -62,6 +62,9 @@
         _turret = [[Turret alloc] initWithCaller:self];
         [self addChild:_turret.sprite];
         
+        // Reset the score
+        _points = 0;
+        
         // Enable touches
         self.isTouchEnabled = YES;
         
@@ -128,11 +131,25 @@
     }
 }
 
+-(void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    // Get the location of the touch
+    UITouch *touch = [touches anyObject];
+    CGPoint location = [touch locationInView:[touch view]];
+    location = [[CCDirector sharedDirector] convertToGL:location];
+    
+    // Fire a projectile from the turret and save it in our projectiles array
+    [_projectiles addObject:[_turret fireProjectile:location]];
+}
+
 -(void)detectCollisions {
     
     // Loop thru rockets
     NSMutableArray *rocketsToDelete = [[NSMutableArray alloc] init];
     for(Rocket *r in _rockets) {
+        
+        // If this rocket is docked, it's not applicable. Skip it.
+        if(r.armor==-1) continue;
         
         // Create a rectangle represenation of this sprite
         CGRect rocketRect = CGRectMake(r.sprite.position.x-r.sprite.contentSize.width/2, 
@@ -163,27 +180,22 @@
         if([projectilesToDelete count] > 0)
             [rocketsToDelete addObject:r];
         
-//        [projectilesToDelete release];   I have no idea why this line receives a bad exec signal
+//        [projectilesToDelete release];   // I have no idea why this line receives a bad exec signal
     }
     
-    // Delete any rockets that had a collision
     for(Rocket *r in rocketsToDelete) {
-        [_rockets removeObject:r];
-        [self removeChild:r.sprite cleanup:YES];
+        
+        // Delete weak rockets that had a collision
+        if(r.armor == 1) {
+            [_rockets removeObject:r];
+            [self removeChild:r.sprite cleanup:YES];
+            _points++;
+        
+        // Remove armor of strong rockets that had a collision
+        } else [r removeArmor];
     }
     
     [rocketsToDelete release];
-}
-
--(void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    
-    // Get the location of the touch
-    UITouch *touch = [touches anyObject];
-    CGPoint location = [touch locationInView:[touch view]];
-    location = [[CCDirector sharedDirector] convertToGL:location];
-    
-    // Fire a projectile from the turret and save it in our projectiles array
-    [_projectiles addObject:[_turret fireProjectile:location]];
 }
 
 @end

@@ -23,6 +23,7 @@
     CCSprite *_clouds;
     CCSprite *_ground;
     Turret *_turret;
+    int _points;
 }
 
 // returns a CCScene that contains the HelloWorldLayer as the only child

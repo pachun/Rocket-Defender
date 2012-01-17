@@ -102,6 +102,10 @@
                             nil]];
 }
 
+-(void)removeArmor {
+    self.armor--;
+}
+
 // Release retained instance vars
 -(void)dealloc {
     [self.sprite release];

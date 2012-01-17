@@ -34,4 +34,5 @@
 -(void)targetClosestDock:(NSMutableArray *)docks;
 -(void)rotateAndLand;
 -(void)dealloc;
+-(void)removeArmor;
 @end
